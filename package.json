@@ -1,7 +1,7 @@
 {
   "name": "bible-verse-preview-extension",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -13,7 +13,7 @@
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare",
-    "submit-to-chrome": "wxt submit --dry-run --chrome-zip /dist/bible-verse-preview-extension-0.0.0-.zip"
+    "submit-to-chrome": "wxt submit --dry-run --chrome-zip /dist/bible-verse-preview-extension-1.0.0-.zip"
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.4",
