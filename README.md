@@ -1,7 +1,7 @@
 **A simple bible verse preview extension**
 <P align="center">
-  <Video src="https://github.com/user-attachments/assets/81245112-484e-4aae-90bd-d294996a4d14"></Video>
-  <Video src="https://github.com/user-attachments/assets/fcd584b3-d82a-4679-b919-d81fe668179c"></Video>
+  <Video src="https://github.com/user-attachments/assets/6d17408b-2aab-4c51-b346-a7484785d9f9"></Video>
+  <Video src="https://github.com/user-attachments/assets/50134f06-bf4f-4601-8cd9-3c10657d32ec"></Video>
 </P>
 
 Steps to build
@@ -12,7 +12,7 @@ Steps to build
   ```
 
 2. In the src/Components/BibleVerse.jsx, replace the api key with your specific key from https://scripture.api.bible/ and change the bible id from https://docs.api.bible/guides/bibles to your preferred translation. 
-  ![img](public/BibleVerse.jsx.png)
+  ![img](public/Media/BibleVerse.jsx.png)
 
 3. Finally run the following commands. For firefox, make sure to `npm run build:firefox`
   ```sh
