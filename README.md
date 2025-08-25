@@ -1,4 +1,4 @@
-**A simple bible verse preview extension**
+**A simple bible verse preview extension using CTRL+ALT+selection**
 <P align="center">
   <Video src="https://github.com/user-attachments/assets/6d17408b-2aab-4c51-b346-a7484785d9f9"></Video>
   <Video src="https://github.com/user-attachments/assets/50134f06-bf4f-4601-8cd9-3c10657d32ec"></Video>
