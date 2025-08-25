@@ -12,8 +12,7 @@
     "submit": "wxt submit init",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
-    "postinstall": "wxt prepare",
-    "submit-to-chrome": "wxt submit --dry-run --chrome-zip /dist/bible-verse-preview-extension-1.0.0-.zip"
+    "postinstall": "wxt prepare"
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.4",
