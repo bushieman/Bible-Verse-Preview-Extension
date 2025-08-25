@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // Load environment variables
-const BIBLE_API_KEY = "e0fe4902096e0b43f34dc51b013c5609"; 
+const BIBLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxx"; 
 const BIBLE_ID = "9879dbb7cfe39e4d-01"; // World English Bible translation
 
 
@@ -108,4 +108,5 @@ export default function BibleVerse({ reference, setCardHeight, setLoading, setEr
 
   return <div dangerouslySetInnerHTML={{ __html: verseContent }} />;
 }
+
 
