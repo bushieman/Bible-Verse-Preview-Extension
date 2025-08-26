@@ -11,7 +11,7 @@ Steps to build
   pnpm i
   ```
 
-2. In the src/Components/BibleVerse.jsx, replace the api key with your specific key from https://scripture.api.bible/ and change the bible id from https://docs.api.bible/guides/bibles to your preferred translation. 
+2. In the src/components/BibleVerse.jsx, replace the api key with your specific key from https://scripture.api.bible/ and change the bible id from https://docs.api.bible/guides/bibles to your preferred translation. 
   ![img](public/Media/BibleVerse.jsx.png)
 
 3. Finally run the following commands. For firefox, make sure to `npm run build:firefox`
@@ -20,6 +20,7 @@ Steps to build
   npm run zip
   ```
 
-4. Now all you need to do is extract the generated zip file in /dist and load unpacked the extracted folder in chrome extensions.
+4. Now all you need to do is extract the generated zip file in /dist and load unpacked the extracted folder in chrome extensions. 
    
-5. For tweaks, run `npm run dev` and make changes then repeat steps 3 and 4.
+5. For tweaks, run `npm run dev` and make changes then repeat steps 3 and 4. NB: Tweak the text colors to your liking by placing the HEX codes on colors list in src/components/Home.jsx
+   ![img](public/Media/Home.jsx.png)
