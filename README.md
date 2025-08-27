@@ -2,8 +2,6 @@
 
   ![Preview1](public/Media/Preview1.png)
   
-  ![Preview2](public/Media/Preview2.png)
-  
   ![Preview3](public/Media/Preview3.png)
 
 
