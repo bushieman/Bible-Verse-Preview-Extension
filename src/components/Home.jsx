@@ -25,8 +25,8 @@ function Home({selection}) {
 	const [showAnimation, setShowAnimation] = useState(false);
 	const [verseContent, setVerseContent] = useState("");
 	const [cardHeight, setCardHeight] = useState({
-		cardContentValue: "",
-		cardValue: ""
+		cardContentValue: "327px",
+		cardValue: "300px"
 	}); // card size to default or compact 
 
 	useEffect(() => {
@@ -75,10 +75,10 @@ function Home({selection}) {
 			<div
 				className="card-container"
 				style={{ height: cardHeight.cardContentValue }}>
+				<div className="top-tape"></div>
 				<div
 					className="card"
 					style={{ height: cardHeight.cardValue }}>
-					<div className="top-tape"></div>
 					<div className="card-content">
 						{selectedWord ? (
 							<div className="word-content">
@@ -132,7 +132,7 @@ function Home({selection}) {
 							<div></div>
 						)}
 					</div>
-					
+
 					{/* Absolute positioned div for rendering loading animation on top of the card when loading is activated.*/}
 					<div
 						className={`${

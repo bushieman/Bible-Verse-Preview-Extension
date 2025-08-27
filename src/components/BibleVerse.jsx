@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // Load environment variables
-const BIBLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxx"; 
+const BIBLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; 
 const BIBLE_ID = "9879dbb7cfe39e4d-01"; // World English Bible translation
 
 

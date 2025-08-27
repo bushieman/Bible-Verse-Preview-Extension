@@ -6,6 +6,8 @@ declare module "wxt/browser" {
     | ""
     | "/"
     | "/Media/BibleVerse.jsx.png"
+    | "/Media/Home.jsx.png"
+    | "/background.js"
     | "/content-scripts/content.js"
     | "/icon/128.png"
     | "/icon/16.png"
