@@ -1,14 +1,13 @@
-**A simple bible verse preview extension using CTRL+ALT+selection**
-<P align="center">
-  ![Preview 1](public/Media/Preview1.png)
-  ![Preview 2](public/Media/Preview2.png)
-  ![Preview 3](public/Media/Preview3.png)
-</P>
+# A simple bible verse preview extension using CTRL+ALT+selection
 
-Features include:
--> Quickly preview a verse without having to link it to an API.
--> Detect multiple wording of the same verse e.g 2 Corinthians 1:1, 2nd Corinthians 1:1, 2 Cor 1:1.
--> Title animation and multiple colors for the UI nerds.
+  ![Preview1](public/Media/Preview1.png)
+  
+  ![Preview2](public/Media/Preview2.png)
+  
+  ![Preview3](public/Media/Preview3.png)
+
+
+Features include: <br>-> Quickly preview a verse without having to link it to an API. <br>-> Detect multiple wording of the same verse e.g 2 Corinthians 1:1, 2nd Corinthians 1:1, 2 Cor 1:1. <br>-> Title animation and multiple colors for the UI nerds.
 
 Steps to build
 1. Pull the repository and install packages.
