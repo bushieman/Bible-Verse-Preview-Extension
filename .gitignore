@@ -1,7 +1,6 @@
 # Logs
 logs
 *.log
-pnpm-debug.log*
 
 # Modules
 node_modules
@@ -9,17 +8,6 @@ package-lock.json
 
 # Dist
 dist
-*.local
 .output
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
 

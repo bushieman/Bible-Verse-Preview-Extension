@@ -61,22 +61,13 @@ function Home({selection}) {
 		'#adff2f',
 		'#EE918D',
 		'#B7FFFA',
-		'#c1d415ff',
-		'#C3E3EB',
 		'#FF7F50',
 		'#F4B393',
-		'#F4FDFF',
-		'#EBF1FC',
-		'#EFF1F3',
 		'#FF9B42',
 		'#C6D8FF',
-		'#F9E7E7',
-		'#FFEDDF',
-		'#F1ABB9',
 		'#87CEEB',
-		'#D8BCAB',
-		'#B87333',
-		'#FF7518'
+		'#FF7518',
+		'#bca4dfff',
 	];
 
 	return (
@@ -89,57 +80,57 @@ function Home({selection}) {
 					style={{ height: cardHeight.cardValue }}>
 					<div className="top-tape"></div>
 					<div className="card-content">
-						<div className="isWord">
-							{selectedWord ? (
-								<div id="word-content">
-									<div className="top">
-										<div>
-											<AnimateWord
-												word={selectedWord}
-												color={color}
-											/>
-										</div>
+						{selectedWord ? (
+							<div className="word-content">
+								<div className="top">
+									<div>
+										<AnimateWord
+											word={selectedWord}
+											color={color}
+										/>
 									</div>
+								</div>
 
-									<div className="line"></div>
+								<div className="line"></div>
 
+								<div className="bottom-container">
 									<div className="bottom">
 										<text style={{ color }}>
 											{selectedWord ? (
 												<BibleVerse
-													reference={selectedWord}
-													setCardHeight={setCardHeight}
-													setLoading={setLoading}
-													setError={setError}
+												reference={selectedWord}
+												setCardHeight={setCardHeight}
+												setLoading={setLoading}
+												setError={setError}
 												/>
 											) : null}
 										</text>
 									</div>
-
-									{/* <div
-										className="bookmark"
-										style={{ color: color }}
-										onClick={handleBookmarkClick}>
-										{showAnimation ? (
-											<Player
-												autoplay
-												loop={false} // Ensure it doesn't loop
-												keepLastFrame
-												src={bookmarkAnimation} // Path to your Lottie JSON file
-												style={{
-													height: '50px',
-													width: '50px',
-												}} // Adjust the size
-											/>
-										) : (
-											<IoBookmarkOutline className="bookmark-icon" />
-										)}
-									</div> */}
 								</div>
-							) : (
-								<div></div>
-							)}
-						</div>
+
+								{/* <div
+									className="bookmark"
+									style={{ color: color }}
+									onClick={handleBookmarkClick}>
+									{showAnimation ? (
+										<Player
+											autoplay
+											loop={false} // Ensure it doesn't loop
+											keepLastFrame
+											src={bookmarkAnimation} // Path to your Lottie JSON file
+											style={{
+												height: '50px',
+												width: '50px',
+											}} // Adjust the size
+										/>
+									) : (
+										<IoBookmarkOutline className="bookmark-icon" />
+									)}
+								</div> */}
+							</div>
+						) : (
+							<div></div>
+						)}
 					</div>
 					
 					{/* Absolute positioned div for rendering loading animation on top of the card when loading is activated.*/}

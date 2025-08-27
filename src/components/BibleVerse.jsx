@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-// Load environment variables
-const BIBLE_API_KEY = "e0fe4902096e0b43f34dc51b013c5609"; 
+const BIBLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; 
 const BIBLE_ID = "9879dbb7cfe39e4d-01"; // World English Bible translation
 
 
@@ -50,6 +49,7 @@ export default function BibleVerse({ reference, setCardHeight, setLoading, setEr
           });
 
           // Step 4: Get the word count and set break points at regular intervals and remove one line-height (22px) space from the card height.
+          // TODO: Find a better way to dynamically set height based on content if possible.
           const wordCount = doc.body.textContent.trim().split(/\s+/).length;
 
           if (wordCount < 10) {

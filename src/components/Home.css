@@ -67,9 +67,17 @@ body {
   z-index: 1;
 }
 
-.isWord {
-  width: 100%;
+.card-content {
+  height: 100%;
   display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.word-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   height: 100%;
 }
 
@@ -195,16 +203,24 @@ body {
   width: 70%; /* Set width to 80% of the container */
 }
 
+.bottom-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  justify-content: center;
+}
+
 .bottom {
   display: flex;
   position: relative;
-  margin: 31px 45px; /* Margin manually set to manage centering in a croocked manner.*/
+  margin: auto 45px;
   flex-direction: column;
   align-items: center;
   z-index: 50;
   overflow: auto;
-  height: 154px;
-  padding: 0px !important;
+  max-height: 154px; /* Set a max height to enable scrolling when content exceeds 7 lines. */
 }
 
 .bottom text {
