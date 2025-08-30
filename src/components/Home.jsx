@@ -19,7 +19,7 @@ function Home({selection}) {
 	const selectedWord = normalizeReference(selection) || selection // Normalize the selection
 
 	// State variables
-	const [version, setVersion] = useState('English Standard Version')
+	const [version, setVersion] = useState('The Holy Bible. English Standard Version ®')
 	const [error, setError] = useState(false);
 	const [color, setColor] = useState('');
 	const [loading, setLoading] = useState(false);
@@ -129,7 +129,7 @@ function Home({selection}) {
 									)}
 								</div> */}
 								
-								<div className="version">The Holy Bible. English Standard Version.</div>
+								<div className="version">{version}</div>
 
 							</div>
 						) : (
