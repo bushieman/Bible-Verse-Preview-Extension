@@ -1,5 +1,5 @@
 {
-  "name": "bible-verse-preview-extension",
+  "name": "bible-verse-previewer",
   "private": true,
   "version": "1.0.0",
   "type": "module",

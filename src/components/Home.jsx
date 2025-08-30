@@ -19,6 +19,7 @@ function Home({selection}) {
 	const selectedWord = normalizeReference(selection) || selection // Normalize the selection
 
 	// State variables
+	const [version, setVersion] = useState('English Standard Version')
 	const [error, setError] = useState(false);
 	const [color, setColor] = useState('');
 	const [loading, setLoading] = useState(false);
@@ -127,6 +128,9 @@ function Home({selection}) {
 										<IoBookmarkOutline className="bookmark-icon" />
 									)}
 								</div> */}
+								
+								<div className="version">The Holy Bible. English Standard Version.</div>
+
 							</div>
 						) : (
 							<div></div>
@@ -160,6 +164,7 @@ function Home({selection}) {
 							style={{ height: '270px', width: '270px' }} // Adjust the size
 						/>
 					</div>
+
 				</div>
 			</div>
 		</>
