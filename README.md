@@ -1,8 +1,11 @@
-**A simple bible verse preview extension using CTRL+ALT+selection**
-<P align="center">
-  <Video src="https://github.com/user-attachments/assets/6d17408b-2aab-4c51-b346-a7484785d9f9"></Video>
-  <Video src="https://github.com/user-attachments/assets/50134f06-bf4f-4601-8cd9-3c10657d32ec"></Video>
-</P>
+# A simple bible verse preview extension using CTRL+ALT+selection
+
+  ![Preview1](public/Media/Preview1.png)
+  
+  ![Preview3](public/Media/Preview3.png)
+
+
+Features include: <br>-> Quickly preview a verse without having to link it to an API. <br>-> Detect multiple wording of the same verse e.g 2 Corinthians 1:1, 2nd Corinthians 1:1, 2 Cor 1:1. <br>-> Title animation and multiple colors for the UI nerds.
 
 Steps to build
 1. Pull the repository and install packages.
@@ -22,5 +25,6 @@ Steps to build
 
 4. Now all you need to do is extract the generated zip file in /dist and load unpacked the extracted folder in chrome extensions. 
    
-5. For tweaks, run `npm run dev` and make changes then repeat steps 3 and 4. NB: Tweak the text colors to your liking by placing the HEX codes on colors list in src/components/Home.jsx
+5. For tweaks, run `npm run dev` and make changes then repeat steps 3 and 4.
+   *NB*: Tweak the text colors to your liking by placing the HEX codes on colors list in src/components/Home.jsx
    ![img](public/Media/Home.jsx.png)
