@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Load Notion API settings from .env
-const NOTION_API_KEY = "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"
+const NOTION_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 const DATABASE_ID = "2518e613082180338e8bd932ef54e432"
 
 const NOTION_HEADERS = {
