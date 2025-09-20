@@ -18,6 +18,7 @@ declare module '#imports' {
   export { InvalidMatchPattern, MatchPattern } from 'wxt/utils/match-patterns';
   export { useState, useCallback, useMemo, useEffect, useRef, useContext, useReducer } from 'react';
   export { fakeBrowser } from 'wxt/testing';
+  export { default as AddBookmark } from '../src/components/AddBookmark';
   export { default as AnimateWord } from '../src/components/AnimateWord';
   export { default as BibleVerse } from '../src/components/BibleVerse';
   export { default as Home } from '../src/components/Home';

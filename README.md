@@ -17,10 +17,15 @@ Steps to build
 2. In the src/components/BibleVerse.jsx, replace the api key with your specific key from https://scripture.api.bible/ and change the bible id from https://docs.api.bible/guides/bibles to your preferred translation. 
   ![img](public/Media/BibleVerse.jsx.png)
 
-3. Finally run the following commands. For firefox, make sure to `npm run build:firefox`
+3. Finally run the following commands.
   ```sh
+  // chrome
   npm run build
   npm run zip
+
+  //firefox
+  npm run build:firefox
+  npm run zip:firefox
   ```
 
 4. Now all you need to do is extract the generated zip file in /dist and load unpacked the extracted folder in chrome extensions. 

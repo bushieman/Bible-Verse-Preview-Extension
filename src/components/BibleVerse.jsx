@@ -5,8 +5,9 @@ const BIBLE_API_KEY = "e0fe4902096e0b43f34dc51b013c5609";
 const BIBLE_ID = "9879dbb7cfe39e4d-01"; // World English Bible translation
 
 
-export default function BibleVerse({ reference, setCardHeight, setLoading, setError}) {
+export default function BibleVerse({ reference, setCardHeight, setLoading, setError, bookmarks, setDisabled, setVerse, setVerseText}) {
   const [verseContent, setVerseContent] = useState("");
+
 
   useEffect(() => {
     console.log("Fetching ", reference, " from Bible API...");
@@ -34,6 +35,10 @@ export default function BibleVerse({ reference, setCardHeight, setLoading, setEr
             }
           );
           const verseData = await verseRes.json();
+          setVerse(searchData.data.passages[0].reference)
+          console.log('verse iD', verseId)
+          console.log("BOOK:", searchData.data.passages[0].reference);
+          console.log("Verse content:", verseData.data.content);
 
           let content = verseData.data.content;
 
@@ -48,9 +53,17 @@ export default function BibleVerse({ reference, setCardHeight, setLoading, setEr
               span.replaceWith(sup);
             }
           });
+          setVerseText(doc.body.textContent)
 
-          // Step 4: Get the word count and set break points at regular intervals and remove one line-height (22px) space from the card height.
+          // Step 4: Check if verse in Notion database
+          if (searchData.data.passages[0].reference in bookmarks) {
+            console.log("Verse is bookmarked in Notion");
+            setShowAnimation(true)
+            setDisabled(true)
+          }
+          // Step 5: Get the word count and set break points at regular intervals and remove one line-height (22px) space from the card height.
           // TODO: Find a better way to dynamically set height based on content if possible.
+          console.log("verse, ", doc.body.textContent)
           const wordCount = doc.body.textContent.trim().split(/\s+/).length;
 
           if (wordCount < 10) {
@@ -85,7 +98,7 @@ export default function BibleVerse({ reference, setCardHeight, setLoading, setEr
             });
           }
 
-          // Step 5: Get updated HTML
+          // Step 6: Get updated HTML
           const updatedHTML = doc.body.innerHTML;
           setVerseContent(updatedHTML);
           setLoading(false);

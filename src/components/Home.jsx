@@ -16,19 +16,31 @@ import './Home.css';
 
 
 function Home({selection}) {
-	const selectedWord = normalizeReference(selection) || selection // Normalize the selection
-
 	// State variables
-	const [version, setVersion] = useState('The Holy Bible. English Standard Version ®')
-	const [error, setError] = useState(false);
-	const [color, setColor] = useState('');
-	const [loading, setLoading] = useState(false);
-	const [showAnimation, setShowAnimation] = useState(false);
-	const [verseContent, setVerseContent] = useState("");
+	const [bookmarks, setBookmarks] = useState([]);
 	const [cardHeight, setCardHeight] = useState({
 		cardContentValue: "327px",
 		cardValue: "300px"
 	}); // card size to default or compact 
+	const [color, setColor] = useState('');
+	const [disabled, setDisabled] = useState(false);
+	const [error, setError] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [showAnimation, setShowAnimation] = useState(false);
+	const [verse, setVerse] = useState("");
+	const [verseText, setVerseText] = useState("");
+	const [version, setVersion] = useState('The Holy Bible. English Standard Version ®')
+	
+	const selectedWord = normalizeReference(selection) || selection // Normalize the selection
+
+	// Fetch bookmarks from notion
+	useEffect(() => {
+		fetch("bookmarks")
+			.then((res) => res.json())
+			.then((data) => setBookmarks(data))
+			.catch((err) => console.error("Error fetching bookmarks:", err));
+	}, []);
+
 
 	useEffect(() => {
 		// Activate the loading animation
@@ -50,10 +62,26 @@ function Home({selection}) {
 		// Get a random color from the colors collection
 		const randomColor = colors[Math.floor(Math.random() * colors.length)];
 		setColor(randomColor);
+		
 	}, []);
 
-  	const handleBookmarkClick = async (selectedWord, verseContent) => {
-		setShowAnimation(!showAnimation);
+	const handleBookmarkClick = async () => {
+		try {
+			const response = await fetch("http://127.0.0.1:5000/add_bookmark", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ verse, verseText }),
+			});
+
+			const result = await response.json();
+			if (response.ok) {
+				setMessage("✅ Bookmark added!");
+			} else {
+				setMessage("❌ Error: " + result.error);
+			}
+			} catch (err) {
+			setMessage("⚠️ Network error: " + err.message);
+		}
 	};
 
 	// Randomize text colors
@@ -103,13 +131,17 @@ function Home({selection}) {
 												setCardHeight={setCardHeight}
 												setLoading={setLoading}
 												setError={setError}
+												bookmarks={bookmarks}
+												setDisabled={setDisabled}
+												setVerse={setVerse}
+												setVerseText={setVerseText}
 												/>
 											) : null}
 										</text>
 									</div>
 								</div>
 
-								{/* <div
+								<div
 									className="bookmark"
 									style={{ color: color }}
 									onClick={handleBookmarkClick}>
@@ -125,9 +157,9 @@ function Home({selection}) {
 											}} // Adjust the size
 										/>
 									) : (
-										<IoBookmarkOutline className="bookmark-icon" />
+										<IoBookmarkOutline className="bookmark-icon" disable={disabled}/>
 									)}
-								</div> */}
+								</div>
 								
 								<div className="version">{version}</div>
 
