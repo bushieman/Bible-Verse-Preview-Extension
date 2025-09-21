@@ -141,7 +141,7 @@ function Home({selection}) {
 									</div>
 								</div>
 
-								<div
+								{/* <div
 									className="bookmark"
 									style={{ color: color }}
 									onClick={handleBookmarkClick}>
@@ -159,7 +159,7 @@ function Home({selection}) {
 									) : (
 										<IoBookmarkOutline className="bookmark-icon" disable={disabled}/>
 									)}
-								</div>
+								</div> */}
 								
 								<div className="version">{version}</div>
 

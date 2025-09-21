@@ -11,7 +11,7 @@ app.use(express.json());
 
 // Load Notion API settings from .env
 const NOTION_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-const DATABASE_ID = "2518e613082180338e8bd932ef54e432"
+const DATABASE_ID = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 const NOTION_HEADERS = {
   Authorization: `Bearer ${NOTION_API_KEY}`,
