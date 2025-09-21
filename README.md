@@ -33,3 +33,6 @@ Steps to build
 5. For tweaks, run `npm run dev` and make changes then repeat steps 3 and 4.
    *NB*: Tweak the text colors to your liking by placing the HEX codes on colors list in src/components/Home.jsx
    ![img](public/Media/Home.jsx.png)
+
+ATTRIBUTION:
+<a href='https://dryicons.com/icon/bible-icon-11419'> Extension Icon by Dryicons </a>
