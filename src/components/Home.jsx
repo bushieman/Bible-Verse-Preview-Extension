@@ -4,8 +4,8 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import WebFont from 'webfontloader';
 import { IoBookmarkOutline } from 'react-icons/io5';
 // components
-import BibleVerse from "./BibleVerse";
-import normalizeReference from './Regex';
+import BibleVerse from './BibleVerse';
+import normalizeReference from './normalizeReference';
 import AnimateWord from './AnimateWord';
 // assets
 import bookmarkAnimation from '../assets/animations/bookmark.json';
@@ -22,24 +22,24 @@ function Home({selection}) {
 		cardContentValue: "327px",
 		cardValue: "300px"
 	}); // card size to default or compact 
-	const [color, setColor] = useState('');
+	const [color, setColor] = useState("");
 	const [disabled, setDisabled] = useState(false);
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [showAnimation, setShowAnimation] = useState(false);
-	const [verse, setVerse] = useState("");
 	const [verseText, setVerseText] = useState("");
 	const [version, setVersion] = useState('The Holy Bible. English Standard Version ®')
 	
 	const selectedWord = normalizeReference(selection) || selection // Normalize the selection
+	const [bibleReference, setBibleReference ] = useState("")
 
-	// Fetch bookmarks from notion
-	useEffect(() => {
-		fetch("bookmarks")
-			.then((res) => res.json())
-			.then((data) => setBookmarks(data))
-			.catch((err) => console.error("Error fetching bookmarks:", err));
-	}, []);
+	// // Fetch bookmarks from notion
+	// useEffect(() => {
+	// 	fetch("bookmarks")
+	// 		.then((res) => res.json())
+	// 		.then((data) => setBookmarks(data))
+	// 		.catch((err) => console.error("Error fetching bookmarks:", err));
+	// }, []);
 
 
 	useEffect(() => {
@@ -70,7 +70,7 @@ function Home({selection}) {
 			const response = await fetch("http://127.0.0.1:5000/add_bookmark", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ verse, verseText }),
+				body: JSON.stringify({bibleReference, verseText }),
 			});
 
 			const result = await response.json();
@@ -114,7 +114,7 @@ function Home({selection}) {
 								<div className="top">
 									<div>
 										<AnimateWord
-											word={selectedWord}
+											word={bibleReference}
 											color={color}
 										/>
 									</div>
@@ -133,8 +133,8 @@ function Home({selection}) {
 												setError={setError}
 												bookmarks={bookmarks}
 												setDisabled={setDisabled}
-												setVerse={setVerse}
 												setVerseText={setVerseText}
+												setBibleReference={setBibleReference}
 												/>
 											) : null}
 										</text>

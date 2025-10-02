@@ -46,7 +46,6 @@ export default defineContentScript({
     document.addEventListener("mouseup", (e) => {
       if (e.ctrlKey && e.altKey) {
         const text = window.getSelection()?.toString().trim();
-        console.log(text, "Selected text on mouseup");
         selectedText = text ? text : null;
         ui.mount(); // Pass text as a prop
       }

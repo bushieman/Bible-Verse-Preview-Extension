@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import beautifyText from "./beautifyText";
 
 // Load environment variables
 const BIBLE_API_KEY = "e0fe4902096e0b43f34dc51b013c5609"; 
 const BIBLE_ID = "9879dbb7cfe39e4d-01"; // World English Bible translation
 
 
-export default function BibleVerse({ reference, setCardHeight, setLoading, setError, bookmarks, setDisabled, setVerse, setVerseText}) {
+export default function BibleVerse({ reference, setCardHeight, setLoading, setError, bookmarks, setDisabled, setVerseText, setBibleReference}) {
   const [verseContent, setVerseContent] = useState("");
 
 
@@ -35,10 +36,9 @@ export default function BibleVerse({ reference, setCardHeight, setLoading, setEr
             }
           );
           const verseData = await verseRes.json();
-          setVerse(searchData.data.passages[0].reference)
-          console.log('verse iD', verseId)
-          console.log("BOOK:", searchData.data.passages[0].reference);
-          console.log("Verse content:", verseData.data.content);
+          const book = searchData.data.passages[0].reference
+          const beautifiedBook = beautifyText(book)
+          setBibleReference(beautifiedBook)
 
           let content = verseData.data.content;
 
@@ -63,7 +63,6 @@ export default function BibleVerse({ reference, setCardHeight, setLoading, setEr
           }
           // Step 5: Get the word count and set break points at regular intervals and remove one line-height (22px) space from the card height.
           // TODO: Find a better way to dynamically set height based on content if possible.
-          console.log("verse, ", doc.body.textContent)
           const wordCount = doc.body.textContent.trim().split(/\s+/).length;
 
           if (wordCount < 10) {

@@ -22,5 +22,6 @@ declare module '#imports' {
   export { default as AnimateWord } from '../src/components/AnimateWord';
   export { default as BibleVerse } from '../src/components/BibleVerse';
   export { default as Home } from '../src/components/Home';
-  export { default as Regex } from '../src/components/Regex';
+  export { default as beautifyText } from '../src/components/beautifyText';
+  export { default as normalizeReference } from '../src/components/normalizeReference';
 }

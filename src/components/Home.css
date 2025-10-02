@@ -13,6 +13,13 @@
   font-display: fallback;
 }
 
+@font-face {
+  font-family: 'mali';
+  src: url('../assets/fonts/Mali-Regular.ttf');
+  font-style: normal;
+  font-weight: normal;
+}
+
 :root {
   --tape-gray: #dbd8be;
   --tape-edge-gray: #b7b49d;
@@ -155,6 +162,10 @@ body {
   margin-left: auto;
   font-weight: bolder;
   z-index: 20;
+
+  font-family: mali;
+  font-size: 22px;
+  text-transform: uppercase;
 }
 
 .bookmark {
