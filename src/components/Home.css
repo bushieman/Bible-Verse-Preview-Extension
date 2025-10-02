@@ -20,6 +20,12 @@
   font-weight: normal;
 }
 
+@font-face {
+  font-family: 'mali-bold';
+  src: url('../assets/fonts/Mali-Bold.ttf');
+  font-style: normal;
+}
+
 :root {
   --tape-gray: #dbd8be;
   --tape-edge-gray: #b7b49d;
@@ -163,7 +169,7 @@ body {
   font-weight: bolder;
   z-index: 20;
 
-  font-family: mali;
+  font-family: mali-bold;
   font-size: 22px;
   text-transform: uppercase;
 }
