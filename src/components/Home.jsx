@@ -2,7 +2,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import WebFont from 'webfontloader';
-import { IoBookmarkOutline } from 'react-icons/io5';
+import { IoBookmarkOutline } from "react-icons/io5";
+import { VscBookmark } from "react-icons/vsc";
 // components
 import BibleVerse from './BibleVerse';
 import normalizeReference from './normalizeReference';
@@ -13,6 +14,7 @@ import loadingAnimation from '../assets/animations/loading.json';
 import errorAnimation from '../assets/animations/error.json';
 // css
 import './Home.css';
+import 'animate.css'; // animation css
 
 
 function Home({selection}) {
@@ -25,7 +27,7 @@ function Home({selection}) {
 	const [color, setColor] = useState("");
 	const [disabled, setDisabled] = useState(false);
 	const [error, setError] = useState(false);
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [showAnimation, setShowAnimation] = useState(false);
 	const [verseText, setVerseText] = useState("");
 	const [version, setVersion] = useState('The Holy Bible. English Standard Version ®')
@@ -33,18 +35,32 @@ function Home({selection}) {
 	const selectedWord = normalizeReference(selection) || selection // Normalize the selection
 	const [bibleReference, setBibleReference ] = useState("")
 
+	const bookmarkVerse = async () => {
+			
+	};
+
 	// // Fetch bookmarks from notion
-	// useEffect(() => {
-	// 	fetch("bookmarks")
-	// 		.then((res) => res.json())
-	// 		.then((data) => setBookmarks(data))
-	// 		.catch((err) => console.error("Error fetching bookmarks:", err));
-	// }, []);
+	useEffect(() => {
+		const checkVerseInNotion = async () => {
+			try {
+			const res = await fetch("https://bushman.pythonanywhere.com/check-verse", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ verse: bibleReference }),
+			});
+
+			const result = await res.json();
+			setShowAnimation(result.exists);
+			} catch (err) {
+			console.error("Error checking verse:", err);
+			}
+		};
+
+		checkVerseInNotion() // Check verse once book is found.
+	}, [bibleReference]);
 
 
 	useEffect(() => {
-		// Activate the loading animation
-		setLoading(true)
 
 		// Pre-load the fonts
 		WebFont.load({
@@ -66,22 +82,16 @@ function Home({selection}) {
 	}, []);
 
 	const handleBookmarkClick = async () => {
-		try {
-			const response = await fetch("http://127.0.0.1:5000/add_bookmark", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({bibleReference, verseText }),
-			});
-
-			const result = await response.json();
-			if (response.ok) {
-				setMessage("✅ Bookmark added!");
-			} else {
-				setMessage("❌ Error: " + result.error);
-			}
-			} catch (err) {
-			setMessage("⚠️ Network error: " + err.message);
-		}
+		console.log("Saving...");
+		const res = await fetch("https://bushman.pythonanywhere.com/add-verse", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ bibleReference, verseText }),
+		});
+		const result = await res.json();
+		console.log(result.message || "Saved!");
+		setShowAnimation(true)
+		
 	};
 
 	// Randomize text colors
@@ -120,7 +130,7 @@ function Home({selection}) {
 									</div>
 								</div>
 
-								<div className="line"></div>
+								{loading? '':<div className="line"></div>}
 
 								<div className="bottom-container">
 									<div className="bottom">
@@ -141,7 +151,7 @@ function Home({selection}) {
 									</div>
 								</div>
 
-								{/* <div
+								{loading? '': <div
 									className="bookmark"
 									style={{ color: color }}
 									onClick={handleBookmarkClick}>
@@ -157,11 +167,11 @@ function Home({selection}) {
 											}} // Adjust the size
 										/>
 									) : (
-										<IoBookmarkOutline className="bookmark-icon" disable={disabled}/>
+										<VscBookmark className="bookmark-icon animate__animated animate__wobble" disable={disabled}/>
 									)}
-								</div> */}
+								</div>}
 								
-								<div className="version">{version}</div>
+								{loading? '':<div className="version">{version}</div>}
 
 							</div>
 						) : (

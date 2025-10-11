@@ -4,6 +4,7 @@
 import React, { useEffect, useRef } from 'react';
 import Letterize from 'letterizejs'; // Import Letterize.js
 import anime from "animejs";
+import 'animate.css'; // animation css
 
 
 function AnimateWord({word, color}) {

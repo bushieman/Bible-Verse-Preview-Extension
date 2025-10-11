@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import beautifyText from "./beautifyText";
 
 // Load environment variables
-const BIBLE_API_KEY = "e0fe4902096e0b43f34dc51b013c5609"; 
+const BIBLE_API = "e0fe4902096e0b43f34dc51b013c5609" 
 const BIBLE_ID = "9879dbb7cfe39e4d-01"; // World English Bible translation
 
 
@@ -20,7 +20,7 @@ export default function BibleVerse({ reference, setCardHeight, setLoading, setEr
             reference
           )}`,
           {
-            headers: { "api-key": BIBLE_API_KEY }
+            headers: { "api-key": BIBLE_API }
           }
         );
         const searchData = await searchRes.json();
@@ -32,7 +32,7 @@ export default function BibleVerse({ reference, setCardHeight, setLoading, setEr
           const verseRes = await fetch(
             `https://api.scripture.api.bible/v1/bibles/${BIBLE_ID}/verses/${verseId}`,
             {
-              headers: { "api-key": BIBLE_API_KEY }
+              headers: { "api-key": BIBLE_API }
             }
           );
           const verseData = await verseRes.json();

@@ -11,6 +11,9 @@ importers:
       '@lottiefiles/react-lottie-player':
         specifier: ^3.5.4
         version: 3.6.0(react@18.3.1)
+      animate.css:
+        specifier: ^4.1.1
+        version: 4.1.1
       animejs:
         specifier: ^3.2.2
         version: 3.2.2
@@ -655,6 +658,9 @@ packages:
   adm-zip@0.5.16:
     resolution: {integrity: sha512-TGw5yVi4saajsSEgz25grObGHEUaDrniwvA2qwSC060KfqGPdglhvPMA2lPIoxs3PQIItj2iag35fONcQqgUaQ==}
     engines: {node: '>=12.0'}
+
+  animate.css@4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
 
   animejs@3.2.2:
     resolution: {integrity: sha512-Ao95qWLpDPXXM+WrmwcKbl6uNlC5tjnowlaRYtuVDHHoygjtIPfDUoK9NthrlZsQSKjZXlmji2TrBUAVbiH0LQ==}
@@ -2758,6 +2764,8 @@ snapshots:
   acorn@8.15.0: {}
 
   adm-zip@0.5.16: {}
+
+  animate.css@4.1.1: {}
 
   animejs@3.2.2: {}
 

@@ -170,7 +170,7 @@ body {
   z-index: 20;
 
   font-family: mali-bold;
-  font-size: 22px;
+  font-size: 24px;
   text-transform: uppercase;
 }
 
@@ -192,10 +192,14 @@ body {
   opacity: 1;
 }
 
+.bookmark:hover > .bookmark-icon {
+  display: flex;
+}
 .bookmark-icon {
   cursor: pointer;
   font-size: 25px;
   font-weight: bold;
+  display: none;
 }
 
 .top {
@@ -212,7 +216,7 @@ body {
 
 .line {
   border: none;
-  height: 5px;
+  height: 4px;
   position: relative;
   background-color: whitesmoke;
   z-index: 10;
