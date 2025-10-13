@@ -4,6 +4,9 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import WebFont from 'webfontloader';
 import { IoBookmarkOutline } from "react-icons/io5";
 import { VscBookmark } from "react-icons/vsc";
+import { TbCopy } from "react-icons/tb";
+import { TbCopyCheck } from "react-icons/tb";
+import { TbCopyCheckFilled } from "react-icons/tb";
 // components
 import BibleVerse from './BibleVerse';
 import normalizeReference from './normalizeReference';
@@ -25,6 +28,7 @@ function Home({selection}) {
 		cardValue: "300px"
 	}); // card size to default or compact 
 	const [color, setColor] = useState("");
+	const [copied, setCopied] = useState(false);
 	const [disabled, setDisabled] = useState(false);
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(true);
@@ -40,24 +44,24 @@ function Home({selection}) {
 	};
 
 	// // Fetch bookmarks from notion
-	useEffect(() => {
-		const checkVerseInNotion = async () => {
-			try {
-			const res = await fetch("https://bushman.pythonanywhere.com/check-verse", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ verse: bibleReference }),
-			});
+	// useEffect(() => {
+	// 	const checkVerseInNotion = async () => {
+	// 		try {
+	// 		const res = await fetch("https://bushman.pythonanywhere.com/check-verse", {
+	// 			method: "POST",
+	// 			headers: { "Content-Type": "application/json" },
+	// 			body: JSON.stringify({ verse: bibleReference }),
+	// 		});
 
-			const result = await res.json();
-			setShowAnimation(result.exists);
-			} catch (err) {
-			console.error("Error checking verse:", err);
-			}
-		};
+	// 		const result = await res.json();
+	// 		setShowAnimation(result.exists);
+	// 		} catch (err) {
+	// 		console.error("Error checking verse:", err);
+	// 		}
+	// 	};
 
-		checkVerseInNotion() // Check verse once book is found.
-	}, [bibleReference]);
+	// 	checkVerseInNotion() // Check verse once book is found.
+	// }, [bibleReference]);
 
 
 	useEffect(() => {
@@ -81,27 +85,32 @@ function Home({selection}) {
 		
 	}, []);
 
-	const handleBookmarkClick = async () => {
-		console.log("Saving...");
-		const res = await fetch("https://bushman.pythonanywhere.com/add-verse", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ bibleReference, verseText }),
-		});
-		const result = await res.json();
-		console.log(result.message || "Saved!");
-		setShowAnimation(true)
+	// const handleBookmarkClick = async () => {
+	// 	console.log("Saving...");
+	// 	const res = await fetch("https://bushman.pythonanywhere.com/add-verse", {
+	// 		method: "POST",
+	// 		headers: { "Content-Type": "application/json" },
+	// 		body: JSON.stringify({ bibleReference, verseText }),
+	// 	});
+	// 	const result = await res.json();
+	// 	console.log(result.message || "Saved!");
+	// 	setShowAnimation(true)
 		
-	};
+	// };
+
+	const handleCopyClick = () => {
+		const verseToCopy = `${bibleReference}, "${verseText.trimEnd()}"`
+		navigator.clipboard.writeText(verseToCopy)
+		setCopied(true)
+		console.log("Verse copied.")
+	}
 
 	// Randomize text colors
 	// Define a collection of colors
 	const colors = [
 		'#adff2f',
-		'#EE918D',
 		'#B7FFFA',
 		'#FF7F50',
-		'#F4B393',
 		'#FF9B42',
 		'#C6D8FF',
 		'#87CEEB',
@@ -151,7 +160,7 @@ function Home({selection}) {
 									</div>
 								</div>
 
-								{loading? '': <div
+								{/* {loading? '': <div
 									className="bookmark"
 									style={{ color: color }}
 									onClick={handleBookmarkClick}>
@@ -168,6 +177,16 @@ function Home({selection}) {
 										/>
 									) : (
 										<VscBookmark className="bookmark-icon animate__animated animate__wobble" disable={disabled}/>
+									)}
+								</div>} */}
+								{loading? '': <div
+									className="copy"
+									style={{ color: color }}
+									>
+									{copied ? (
+										<TbCopyCheckFilled className="copy-icon" /> 
+									) : (
+										<TbCopy onClick={handleCopyClick} className="copy-icon animate__animated animate__wobble" />
 									)}
 								</div>}
 								

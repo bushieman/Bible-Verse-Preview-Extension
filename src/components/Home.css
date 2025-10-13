@@ -6,21 +6,6 @@
 }
 
 @font-face {
-  font-family: 'garet-bold';
-  src: url('../assets/fonts/Garet-Heavy.ttf');
-  font-weight: bold;
-  font-style: normal;
-  font-display: fallback;
-}
-
-@font-face {
-  font-family: 'mali';
-  src: url('../assets/fonts/Mali-Regular.ttf');
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
   font-family: 'mali-bold';
   src: url('../assets/fonts/Mali-Bold.ttf');
   font-style: normal;
@@ -196,6 +181,33 @@ body {
   display: flex;
 }
 .bookmark-icon {
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: bold;
+  display: none;
+}
+.copy {
+  width: 70px;
+  height: 70px;
+  z-index: 1000;
+  display: flex;
+  opacity: 0;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: 0;
+  transition: 0.2s ease-in;
+}
+
+.copy:hover {
+  opacity: 1;
+}
+
+.copy:hover > .copy-icon {
+  display: flex;
+}
+.copy-icon {
   cursor: pointer;
   font-size: 25px;
   font-weight: bold;
